@@ -13,21 +13,25 @@ const SENTRY_KEY = '37f8a2ee37c0409d8970bc7559c7c7e4';
 should();
 use(chaiAsPromised);
 
-const tests = getTests(
-  '1.8.8',
-  '2.0.18',
-  '3.1.13',
-  '4.2.12',
-  '5.0.13',
-  '6.1.12',
-  '7.3.3',
-  '8.5.5',
-  '9.4.4',
-  '10.4.7',
-  '11.4.8',
-  '12.0.11',
-  '13.1.2',
-);
+const versions = process.env.ELECTRON_VERSION
+  ? [process.env.ELECTRON_VERSION]
+  : [
+      '1.8.8',
+      '2.0.18',
+      '3.1.13',
+      '4.2.12',
+      '5.0.13',
+      '6.1.12',
+      '7.3.3',
+      '8.5.5',
+      '9.4.4',
+      '10.4.7',
+      '11.4.8',
+      '12.0.11',
+      '13.1.2',
+    ];
+
+const tests = getTests(...versions);
 
 describe('Bundle Tests', () => {
   it('Webpack contextIsolation app', async () => {

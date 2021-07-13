@@ -82,6 +82,24 @@ jobs:
       fail-fast: false
       matrix:
         os: [ubuntu-latest, macos-latest, windows-latest]
+        electron:
+          [
+            '1.8.8',
+            '2.0.18',
+            '3.1.13',
+            '4.2.12',
+            '5.0.13',
+            '6.1.12',
+            '7.3.3',
+            '8.5.5',
+            '9.4.4',
+            '10.4.7',
+            '11.4.8',
+            '12.0.11',
+            '13.1.2',
+          ]
+    env:
+      ELECTRON_VERSION: ${{ matrix.electron }}
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
